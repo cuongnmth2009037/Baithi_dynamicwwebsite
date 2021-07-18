@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LayoutDemoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/customer/register',[\App\Http\Controllers\CustomerController::class,'register'])->name('register');
-Route::post('/success_register',[\App\Http\Controllers\CustomerController::class,'success_register'])->name('success_register');
+Route::get('/customer/register',[CustomerController::class,'register'])->name('register');
+Route::post('/success_register',[CustomerController::class,'success_register'])->name('success_register');
 
 //Demo:
-Route::get('/demo/layout/table',[\App\Http\Controllers\LayoutDemoController::class,'display_Table']);
-Route::get('/demo/layout/form',[\App\Http\Controllers\LayoutDemoController::class,'display_Form']);
-Route::get('/demo/layout/master',[\App\Http\Controllers\LayoutDemoController::class,'display_Master_Layout']);
-
-
+Route::get('/demo/layout/table',[LayoutDemoController::class,'display_Table']);
+Route::get('/demo/layout/form',[LayoutDemoController::class,'display_Form']);
+Route::get('/demo/layout/master',[LayoutDemoController::class,'display_Master_Layout']);
 //Demo
+
+//CRUD:
+Route::get('/admin/event/create',[EventController::class,'create']);
+Route::post('/admin/event',[EventController::class,'store']);
+Route::get('/admin/event',[EventController::class,'index']);
+Route::get('/admin/event/edit/{id}',[EventController::class,'edit']);
+Route::put('/admin/event/{id}',[EventController::class,'update']);
+Route::delete('/admin/event/{id}',[EventController::class,'destroy']);
+
+
+
+//CRUD
