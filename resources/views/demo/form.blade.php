@@ -1,9 +1,13 @@
 @extends('demo.master-layout')
 @section('content')
+    <style>
+        .message_error{
+            color: red;
+        }
+    </style>
     <section role="main" class="content-body">
         <header class="page-header">
             <h2>Basic Forms</h2>
-
             <div class="right-wrapper pull-right">
                 <ol class="breadcrumbs">
                     <li>
@@ -38,12 +42,23 @@
                                 <label class="col-md-3 control-label" for="inputRounded">EventName</label>
                                 <div class="col-md-6">
                                     <input name="eventName" type="text" class="form-control input-rounded" id="inputRounded">
+                                    @error('eventName')
+                                    <div class="message_error">
+                                        * {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
+
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="inputRounded">BandName</label>
                                 <div class="col-md-6">
                                     <input name="bandName" type="text" class="form-control input-rounded" id="inputRounded">
+                                    @error('bandName')
+                                    <div class="message_error">
+                                        * {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -55,6 +70,11 @@
 														</span>
                                         <input name="startDate" type="text"  class="form-control">
                                     </div>
+                                    @error('startDate')
+                                    <div class="message_error">
+                                        * {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -66,26 +86,49 @@
 														</span>
                                         <input name="endDate" type="text" class="form-control">
                                     </div>
+                                    @error('endDate')
+                                    <div class="message_error">
+                                        * {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="inputRounded">PortFolio</label>
                                 <div class="col-md-6">
                                     <input name="portfolio" type="text" class="form-control input-rounded" id="inputRounded">
+                                    @error('portfolio')
+                                    <div class="message_error">
+                                        * {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
+
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="inputRounded">TicketPrice</label>
                                 <div class="col-md-6">
                                     <input name="ticketPrice" type="number" class="form-control input-rounded" id="inputRounded">
+                                    @error('ticketPrice')
+                                    <div class="message_error">
+                                        * {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
+
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="inputRounded">Status</label>
                                 <div class="col-md-6">
                                     <input name="status" type="number" class="form-control input-rounded" id="inputRounded">
+                                    @error('status')
+                                    <div class="message_error">
+                                        * {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
+
                             </div>
                             <div class="form-group">
                                 <label class="col-md-6 control-label">Button</label>

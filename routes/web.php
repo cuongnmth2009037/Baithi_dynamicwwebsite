@@ -32,7 +32,18 @@ Route::get('/admin/event',[EventController::class,'index']);
 Route::get('/admin/event/edit/{id}',[EventController::class,'edit']);
 Route::put('/admin/event/{id}',[EventController::class,'update']);
 Route::delete('/admin/event/{id}',[EventController::class,'destroy']);
-
-
+Route::get("/search",'EventController@index');
 
 //CRUD
+
+//EventValidate:
+
+
+//EventValidate
+
+//DemoValidate:
+Route::get('/demo/validate/create',[\App\Http\Controllers\DemoValidate::class,'create']);
+Route::post('/demo/validate/store',[\App\Http\Controllers\DemoValidate::class,'store']);
+//DemoValidate
+
+

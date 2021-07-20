@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Event_Validate;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,17 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $listEvent = Event::all();
-        return view('demo.table',['list'=>$listEvent]);
+//        $list = Event::all();
+        $search = $request->query('search');
+        $queryBuilder = Event::query();
+        if ($search && strlen($search)>0){
+            $queryBuilder = $queryBuilder->where('eventName','like','%'.$search.'%')
+            ->orWhere('bandName','like','%'.$search.'%');
+        }
+        $list = $queryBuilder->paginate(3)->appends(['search'=>$search]);
+        return view('demo.table',['list'=>$list]);
 
     }
 
@@ -35,8 +43,9 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Event_Validate $request)
     {
+            $request->validated();
             $events = new Event();
 //            $events->eventName=$request->get('eventName');
 //            $events->bandName=$request->get('bandName');
@@ -49,6 +58,8 @@ class EventController extends Controller
             $events->save();
             return redirect('/admin/event');
     }
+
+
 
     /**
      * Display the specified resource.
