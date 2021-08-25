@@ -25,7 +25,7 @@ class DemoValidateFormRequest extends FormRequest
     {
         return [
            'name'=>'required|min:5|max:20',
-           'description'=>'requir   ed|min:5|max:20',
+           'description'=>'required|min:5|max:20',
            'price'=>'numeric'
         ];
     }
@@ -38,15 +38,15 @@ class DemoValidateFormRequest extends FormRequest
             'description.required'=>'Vui lòng nhập mô tả',
             'description.min'=>'Mô tả phải tối thiểu 5 ký tự',
             'description.max'=>'Mô tả phải tối đa 20 ký tự',
-            'price.numeric'=>'Gía phải là kiểu số',
+                'price.numeric'=>'Gía phải là kiểu số',
         ];
     }
-    public function withValidator($validator){
-        $validator->after(function ($validator){
-            if ($this->get('name')=='cuong'){
-                $validator->errors()->add('name', 'Không thể nhập với tên cuong');
-            }
-        });
+        public function withValidator($validator){
+            $validator->after(function ($validator){
+                if ($this->get('name')=='cuong'){
+                    $validator->errors()->add('name', 'Không thể nhập với tên cuong');
+                }
+            });
 
-    }
+        }
 }
